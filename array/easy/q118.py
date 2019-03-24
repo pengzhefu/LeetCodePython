@@ -27,10 +27,9 @@ def generate(numRows):  ## Written by my own, time complexity is O(n^2) maybe
 #        ret[i].append(1)
     i = 2
     while i < numRows:   
-        for k in range(1,i):
+        for k in range(1,i): ##就是去掉开头和结尾的两个1
             ret[i][k] = ret[i-1][k-1]+ret[i-1][k]
         i = i+1
     return ret
 
-a = generate(6)
-    
+a = generate(9)
