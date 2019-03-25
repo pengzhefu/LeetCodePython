@@ -24,7 +24,7 @@ Output:
 def generate(numRows):  ## Written by my own, time complexity is O(n^2) maybe
     ret = [[1]*(i+1) for i in range(numRows)]
     i = 2
-    while i < numRows:   
+    while i < numRows: ## 要输出三行及以上的情况  
         for k in range(1,i): ##就是去掉开头和结尾的两个1
             ret[i][k] = ret[i-1][k-1]+ret[i-1][k]
         i = i+1
