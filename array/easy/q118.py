@@ -23,8 +23,6 @@ Output:
 
 def generate(numRows):  ## Written by my own, time complexity is O(n^2) maybe
     ret = [[1]*(i+1) for i in range(numRows)]
-#    for i in range(1,numRows):
-#        ret[i].append(1)
     i = 2
     while i < numRows:   
         for k in range(1,i): ##就是去掉开头和结尾的两个1
