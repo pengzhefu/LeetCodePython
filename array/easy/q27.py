@@ -29,3 +29,18 @@ def removeElement(nums, val):   ## Written by myself, and pass, but the time and
     return len(nums)
     
 a = removeElement([0,1,2,2,3,0,4,2], 2)
+
+def removeElement2(nums: list, val: int) -> int:   ## idea from others, code written by myself
+                                                    ## 这方法就是把所有的val都放到后面去
+    i = 0
+    length = len(nums)
+    while i < length:    ## 当i == length的时候,说明从0到(length-1)这个范围内都没有val了,置换结束
+        if nums[i] == val:
+            nums[i], nums[length-1] = nums[length-1],nums[i]
+            length = length - 1                   ## 记得一定要length-1，相当于把末尾往前提,下一个是val的放倒数第二个
+                                                    ## 但是i不能动，因为可能换过来的还是val,要把这个val也放到后面
+        else:
+            i = i+1
+    return length
+
+b = removeElement2([0,1,0,2,3,0,4,0], 0)
