@@ -49,7 +49,7 @@ class Solution():
             return True
         latter = self.findLatter(head)
         latter = self.reverseList(latter)
-        while latter:
+        while latter:   ## 用可能是短的那一节！
             if head.val != latter.val:
                 return False
             latter = latter.next
