@@ -43,4 +43,17 @@ def removeElement2(nums: list, val: int) -> int:   ## idea from others, code wri
             i = i+1
     return length
 
+def removeElement3(nums: list, val: int) -> int:  ## written by my own, maintain the original order
+    res = len(nums)
+    i = 0
+    while i < res:
+        if nums[i] == val:
+            for j in range(i,res-1):
+                nums[j] = nums[j+1]
+            nums[res-1] = val
+            res = res-1
+            print(nums)
+        else:
+            i += 1
+    return res
 b = removeElement2([0,1,0,2,3,0,4,0], 0)
