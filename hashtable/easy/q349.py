@@ -24,19 +24,18 @@ Note:
     The result can be in any order.
 '''
 
-def intersection(nums1, nums2):   ## Using two dict, written by my own
+def intersection(nums1, nums2):   ## Using only one dict, written by my own, time is O(m+n), space is O(m)
     ret = []
     ans1 = {}
-    ans2 = {}
-    for item in nums1:   ## 先遍历一次nums1, 再遍历一次nums2, 用dict的keys搜索避免产生重复
+    for item in nums1:   
         if item not in ans1.keys():
             ans1[item] = 1
         else:
             ans1[item] += 1
     for item in nums2:
-        if item in ans1.keys() and item not in ans2.keys():
+        if item in ans1.keys() and ans1[item] !=0:
             ret.append(item)
-            ans2[item] = 1
+            ans1[item] = 0
     return ret
 
 #a = intersection(nums1 = [1,2,2,1], nums2 = [2,2])
