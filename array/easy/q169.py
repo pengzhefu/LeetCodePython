@@ -34,4 +34,8 @@ def majorityElement(nums):## Written by my own, using dict, time complexity is O
         if ret[num] == times:
             return num
 
+def majorityElement2(nums):  ## method from solution
+                            ## 原理很简单，因为出现次数要一半以上，所以排序后在最中间的就一定是他
+    nums.sort()
+    return nums[len(nums)//2]
 a = majorityElement([2,2,1,1,1,2,2,3])
