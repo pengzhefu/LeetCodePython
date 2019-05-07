@@ -46,17 +46,12 @@ a = maxProfit([7,6,4,3,1])
 
 def maxProfit2(prices):   ## written by my own, concerning about q53
                             ## and, time complexity is O(n)
-    if prices == []: 
+    if len(prices) <= 1: 
         return 0
-    else:
-        res = 0
-        cur_res = 0
-        min_buy = prices[0]
-        for i in range(0,len(prices)-1):
-            min_buy = min(min_buy, prices[i])  ##相当于在这一次循环中，每次都会判断最低进价
-            cur_res = max(cur_res, prices[i+1] - min_buy) ## 如果最近进价不变，相当于就只更新卖价
-                                                            ##就算进价更新了，也只能从更新的idx之后找
-                                                            ##卖价，所以继续循环就好了
-            res = max(res, cur_res)     ##将现在的结果和已经保存的最小结果进行比较
-        return res
+    price = prices[0]
+    profit = prices[1] - prices[0]
+    for i in range(1,len(prices)):
+        price = min(prices[i],price)
+        profit = max(profit, prices[i]-price)
+    return profit
 b = maxProfit2([7,1,5,3,6,4])
