@@ -66,8 +66,8 @@ def backspaceCompare2(S: str, T: str) -> bool:   ## other's solution, time O(m+n
     cj = 0
     
     while i >= 0 or j >= 0:
-        while i >= 0:
-            if S[i] == "#":
+        while i >= 0:     ## if的顺序很重要！，而且没有continue， 先确定不是#了再往前移和拿掉#
+            if S[i] == "#":   
                 i -= 1
                 ci +=1
             elif ci > 0:
