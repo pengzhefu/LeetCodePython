@@ -34,12 +34,12 @@ class TreeNode:
 class Solution:
     def zigzagLevelOrder(self, root: TreeNode) -> [[int]]:
         ret = []
-        stack = []
+        stack = []   ## stack是放每次那一层都有什么,
         stack.append(root)
         n = 1
         while len(stack) != 0 and root:
             tmp = []
-            tmp_stack = []
+            tmp_stack = []  ## tmp_stack是放这一层的下一层都有哪些点
             # print('stack')
             # for item in stack:
             #     print(item.val)
@@ -47,13 +47,13 @@ class Solution:
             while stack:
                 point = stack.pop()
                 tmp.append(point.val)
-                if n %2 != 0:
+                if n %2 != 0:   ## 奇数层，先放左边，再放右边
                     # print('here')
                     if point.left:
                         tmp_stack.append(point.left)
                     if point.right:
                         tmp_stack.append(point.right)
-                else:
+                else:   ## 偶数层，先放右边，再放左边
                     if point.right:
                         tmp_stack.append(point.right)
                     if point.left:
