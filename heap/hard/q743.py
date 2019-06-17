@@ -45,10 +45,10 @@ def networkDelayTime(times: [[int]], N: int, K: int) -> int:  ## N是总共有�
     heapq.heappush(heap,(0,K))  ## 先初始化最小堆,加入的方式是用tuple构成(这个点和起点的距离,这个点)
     while len(heap) != 0:
         weight, point = heapq.heappop(heap)  ## weight是距离,point是点, 首先会找出来每一层离起始点距离最小的点
-        if point not in dist:
+        if point not in dist:   ## dist就相当于最终结果, 所以如果不在这结果里, 再添加。
             dist[point] = weight   ## 可以直接用weight的原因是因为在添加heap的过程中有进行修改,而且是heap, 小的先出来,
                                     ## 后面的大的因为添加过所以就忽略了
-            for connect_point in graph[point]:   ##
+            for connect_point in graph[point]:   ##  加上更新, 距离实际上在heap里就有更新了, 相同点距离小的先出来
                 heapq.heappush(heap, (dist[point] + graph[point][connect_point], connect_point))
                 
         print(heap)
