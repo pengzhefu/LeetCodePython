@@ -49,6 +49,8 @@ class Solution:
                     i = i+1  ## 移动start是因为要找在这个区间里，比这个最小的start要大的仍然小于移动后的end的个数，所以start
                             ## 跟着移动， 可以这么理解：移动以后的end可以比这个start大了，但是只有一个start小于这个end的话，
                             ## ret不加1, 那么start就往后移1,大于这个end了,那么end也要往后移，直到有至少两个start小于当前end
+                            ## 简单理解就是: 这个start晚于这个end, 那么这个end结束以后的房间就会给这个start用, 那么就直接
+                            ## 去看新的end和新的start是否还是晚于的关系
             else:
                 break
         return ret
@@ -59,13 +61,13 @@ class Solution:
             return 0
         intervals.sort(key = lambda x: x[0])  ## 先把输入的数按照起始时间排序
         heap = []
-        heapq.heappush(heap,intervals[0][1])  ## 把最早开始的会议的结束时间输入
+        heapq.heappush(heap,intervals[0][1])  ## 把最早开始的会议的结束时间输入, heap里面只有结束时间
         i = 1
         # print(heap[0])
         while i < len(intervals):
             if intervals[i][0] >= heap[0]:   ## 如果下一个要开始的会议的开始时间，晚于当前heap最早的结束时间, 
                                             ## 就更新那个的结束时间
-                tmp = heapq.heappop(heap)
+                tmp = heapq.heappop(heap)   ## 先pop出来, 
                 heapq.heappush(heap,intervals[i][1])
             else:   ## 如果早于，就要添加
                 heapq.heappush(heap,intervals[i][1])
