@@ -39,20 +39,20 @@ def searchMatrix(matrix, target):  ## written by my own! the solution call it as
         m = len(matrix[0])
     if m ==0:
         return False
-    i = 0
+    i = 0  ## 先从第一行开始
     while i < n:   ## i是行, j是列
-        j = 0
+        j = 0  ## 每一行从第一列开始
         while j < m:
-            if matrix[i][j] < target:
+            if matrix[i][j] < target:  ## 如果小于的话, 先移动列
                 j += 1
             elif matrix[i][j] == target:
                 return True
-            else:
-                if j == 0:
+            else:   ## 如果大于的话, 就说明在这个点之后的右,下,或者右下方都不符合要求了, 因为都比这个点大
+                if j == 0:  ## 如果这已经是第一列了, 那么没有符合要求的了
                     return False
-                else:
+                else:  ## 如果不是, 那就把这一列作为新的边界条件,然后会跳出, 往下一行的第一列重新开始找
                     m = j
-        i = i+1
+        i = i+1  
     return False
 #a = searchMatrix(, 2)
 
