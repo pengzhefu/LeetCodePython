@@ -41,10 +41,10 @@ class Solution:
             if right_height == -1:
                 return -1
             if abs(left_height - right_height) <= 1:
-                return max(left_height, right_height) +1
+                return max(left_height, right_height) +1 # 这里加1是非常关键的！因为是计算总层数, 所以在自己这一层其实也是一个高度,就算是个空的也是一层
             else:
                 return -1
-        return depth(pRoot) >= 0
+        return depth(pRoot) != -1
               
 
         
