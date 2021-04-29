@@ -27,6 +27,7 @@ Output: "bb"
 j-i<2是为了当首尾两个相等的时候，中间只有零个或者一个字符的话，可以直接返回True
 然后去查看Table[i+1][j-1]是为了看，去掉这首尾相同的两个字符以后，这个内含的字符串是不是True的，如果是，就直接更新
 i代表开头的index，j代表结尾的index，如果Table[i][j] == True,就是说明从i到j这一段是回文的
+https://blog.csdn.net/fuxuemingzhu/article/details/79573621
 '''
 s = 'babad'
 #dp = [[0 for i in range(len(s))] for i in range(len(s))]
